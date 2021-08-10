@@ -41,6 +41,8 @@
 
 /**
  * Stepper motor configuration.
+ *
+ * STEP_PIN use PWM output! Do not touch it, unless you know what you doing.
  */
 #define STEP_PIN 9
 #define DIRECTION_PIN 7
