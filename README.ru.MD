@@ -6,6 +6,8 @@
 
 ![](https://user-images.githubusercontent.com/5612507/128636845-9ac9a695-918d-4a60-a002-c68c25360bce.jpg)
 
+[![](https://user-images.githubusercontent.com/5612507/128865930-81133e4f-d7af-42f1-810c-93fd7418a0d5.jpg)](https://www.youtube.com/watch?v=tWknhwFOHiI)
+
 # Schematic
 
 GNV и 5 вольт не показаны, подключите их к ардуино, тач-сенсору и драйверу шагового двигателя.
