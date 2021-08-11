@@ -4,13 +4,13 @@ English | [Русский](README.ru.MD)
 
 POC prototype of film processor for developing drums like Jobo or any other watertight.
 
-![](https://user-images.githubusercontent.com/5612507/128636845-9ac9a695-918d-4a60-a002-c68c25360bce.jpg)
-
 [![](https://user-images.githubusercontent.com/5612507/128865930-81133e4f-d7af-42f1-810c-93fd7418a0d5.jpg)](https://www.youtube.com/watch?v=tWknhwFOHiI)
+
+![](https://user-images.githubusercontent.com/5612507/128636845-9ac9a695-918d-4a60-a002-c68c25360bce.jpg)
 
 # Schematic
 
-GNV and 5v lines not shown, attach it Arduino, touch sensor and stepper driver.
+GND and 5v lines not shown, attach it Arduino, touch sensor and stepper driver.
 
 Arduino ports can be remapped in [config.h](https://github.com/TheLongRunSmoke/film_processor_poc/blob/main/config.h)
 
@@ -59,5 +59,27 @@ I already had most of the parts, so prices approximate.
 | 200mm piece of 8mm stock X 2  |       |       |
 | Assorted M3 and M4 hardware  |       |       |
 |   |    Total:   |   ~60$    |
+
+# Construction
+
+You can drive developing drum in any way you want, even use a lift from Jobo processor if you find one.
+
+Kinematic scheme of my prototype must be a pretty obvious by this picture. Place axis about 100 mm apart.
+
+![](https://user-images.githubusercontent.com/5612507/128976389-5724b64d-aadf-4f78-a588-7c6226d846bf.jpg)
+
+# Firmware
+
+Easiest way to build and upload firmware is using Arduino IDE.
+
+1. [Download](https://www.arduino.cc/en/software) and install Arduino IDE from official site.
+2. Install FreeRTOS library using Sketch->Include library->Manage libraries... Type 'freertos' in search field, in first
+   row select version 10.4.4-1 and click Install.
+3. Select your board in Tool menu.
+4. Click Upload.
+
+# Calibration
+
+WIP
 
 TBU...
