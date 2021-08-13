@@ -8,7 +8,7 @@ void serial::task(void* pvParameters) {
     while (!Serial) {
         vTaskDelay(1);
     }
-    // Extract the latest message and send it to serial port.
+    // Extract the latest message and send it to the serial port.
     for (;;) {
         char message[8];
         if (xQueueReceive(state->messageQueue, message, (TickType_t) 10) != pdPASS) continue;

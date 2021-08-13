@@ -9,4 +9,3 @@
  *
  * There is no optimizations of any sort, because it POC.
  */
-

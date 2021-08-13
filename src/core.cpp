@@ -6,49 +6,40 @@
 #include "tasks/motorcontroller.hpp"
 
 // This object represents current system state.
-State* state = new State();
+State state{};
 
 // Run system.
 void setup() {
-
+    // Check CPU speed.
     configASSERT(F_CPU == 16000000L);
 
     xTaskCreate(indication::task,
                 indication::name,
                 128,
-                (void*) state,
+                (void*) &state,
                 configMAX_PRIORITIES - 2,
                 nullptr);
 
     xTaskCreate(user_input::task,
                 user_input::name,
                 128,
-                (void*) state,
+                (void*) &state,
                 configMAX_PRIORITIES - 2,
                 nullptr);
 
     xTaskCreate(serial::task,
                 serial::name,
                 128,
-                (void*) state,
+                (void*) &state,
                 configMAX_PRIORITIES - 2,
                 nullptr);
 
-    if (!CALIBRATION_MODE) {
-        xTaskCreate(motor_controller::controlTask,
-                    motor_controller::controlTaskName,
-                    128,
-                    (void*) state,
-                    configMAX_PRIORITIES - 2,
-                    nullptr);
-    } else {
-        xTaskCreate(motor_controller::calibrationTask,
-                    motor_controller::calibrationTaskName,
-                    128,
-                    (void*) state,
-                    configMAX_PRIORITIES - 2,
-                    nullptr);
-    }
+    xTaskCreate(motor_controller::controlTask,
+                motor_controller::controlTaskName,
+                128,
+                (void*) &state,
+                configMAX_PRIORITIES - 2,
+                nullptr);
 
 }
 

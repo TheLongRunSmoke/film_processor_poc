@@ -22,12 +22,7 @@ void user_input::interruptHandler() {
 void user_input::handleInput(State* state) {
     if (xSemaphoreTake(semaphore, portMAX_DELAY) != pdPASS) return;
     bool buttonState = digitalRead(ACTION_BUTTON_PIN);
-    if (buttonState == ACTION_BUTTON_ACTIVE_LEVEL) {
-        state->isActionButtonPressed = true;
-    } else {
-        state->isActionButtonPressed = false;
-        return;
-    }
+    if (buttonState != ACTION_BUTTON_ACTIVE_LEVEL) return;
     state->isRunning = !state->isRunning;
     xQueueSend(state->messageQueue, state->isRunning ? "start" : "stop", portMAX_DELAY);
 }

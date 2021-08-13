@@ -9,15 +9,33 @@
  */
 namespace user_input {
 
+    /**
+     * Configure inputs and endlessly looping to process inputs.
+     *
+     * @param pvParameters castable to pointer on State instance.
+     */
     void task(void* pvParameters);
 
+    /**
+     * Set semaphore on interrupt.
+     */
     void interruptHandler();
 
+    /**
+     * If interrupt fire, poling inputs and modified State.
+     *
+     * @param state pointer to State instance.
+     */
     void handleInput(State* state);
 
+    /**
+     * Human-readable name for task.
+     */
     static const char* name = "InputTask";
-    static const uint8_t priority = 3;
 
+    /**
+     * Interrupt semaphore.
+     */
     static SemaphoreHandle_t semaphore = xSemaphoreCreateBinary();
 }
 

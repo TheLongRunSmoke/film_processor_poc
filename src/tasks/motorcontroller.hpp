@@ -42,7 +42,9 @@ namespace motor_controller {
     void handlePwmCycle();
 
     /**
-     * Accelerate and decelerate motor by sigmoid curve.
+     * Control motor acceleration and deceleration by sigmoid curve.
+     *
+     * Calculate and set current PWM frequency and duty cycle.
      */
     void sCurve();
 
@@ -56,16 +58,38 @@ namespace motor_controller {
      */
     void config();
 
+    /**
+     * Current step from last direction alteration.
+     */
     static volatile unsigned long currentStep = 0;
-
+    /**
+     * Minimal frequency where motor start.
+     */
     static const uint16_t minFreq = 1000;
+    /**
+     * Sigmoid coefficient, typically between -4 and -6.
+     */
     static float elastic = -ELASTIC;
+    /**
+     * How many steps must be doing before alternate direction of rotation.
+     */
     static unsigned long targetStepNumber = 0;
+    /**
+     * Frequency to go, to achieve RPM from config.
+     */
     static float targetFreq = 0;
+    /**
+     * Cache frequency delta, that used in sigmoid formula.
+     */
     static float freqDelta = 0;
+    /**
+     * Acceleration and deceleration length in motor steps.
+     */
     static float accelRamp = floor(RATIO * (float) RAMP);
 
-    // Debug names for tasks.
+    /**
+     * Human-readable names for tasks.
+     */
     static const char* controlTaskName = "MotorController";
     static const char* reciprocatingSCurveTaskName = "ReciprocatingSCurve";
     static const char* calibrationTaskName = "CalibrationTask";

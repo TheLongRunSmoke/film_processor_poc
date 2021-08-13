@@ -2,9 +2,7 @@
 
 void motor_controller::controlTask(void* pvParameters) {
     auto* state = (State*) pvParameters;
-
     TaskHandle_t motorTask = nullptr;
-
     for (;;) {
         if (state->isRunning && motorTask == nullptr) {
             xTaskCreate(motor_controller::reciprocatingSCurveTask,
@@ -22,6 +20,9 @@ void motor_controller::controlTask(void* pvParameters) {
     }
 }
 
+/**
+ * Macro-style interrupt handler, to prevent any empty interrupt problem.
+ */
 ISR(TIMER1_OVF_vect){
         motor_controller::handlePwmCycle();
 }
@@ -30,6 +31,7 @@ void motor_controller::handlePwmCycle() {
     noInterrupts();
     currentStep++;
     sCurve();
+    // Alternate rotation direction if target number of steps reached.
     if (currentStep > targetStepNumber) {
         currentStep = 0;
         digitalWrite(DIRECTION_PIN, !digitalRead(DIRECTION_PIN));
@@ -54,6 +56,7 @@ void motor_controller::reciprocatingSCurveTask(void* pvParameters) {
 void motor_controller::sCurve() {
     elastic = -ELASTIC;
     unsigned long step = currentStep;
+    // Correct parameters if it's time to decelerate.
     if (currentStep > targetStepNumber - (long) (accelRamp * 2)) {
         elastic = -elastic;
         step = currentStep - (targetStepNumber - (long) (accelRamp * 2));
