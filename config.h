@@ -16,22 +16,6 @@
 #define TURNS 3
 
 /**
- * Calibration mode.
- *
- * Let you setup system for your cinematic and tank size.
- *
- * 1) To enable, set CALIBRATION_MODE to true and load firmware.
- * 2) Push and hold an action button to rotate tank with moderate speed until it made one turn.
- * 3) Read number of step from serial console and write it to RATIO.
- * 4) For return to normal operation, set CALIBRATION_MODE to false and load firmware.
- *
- * CALIBRATION_MODE set to true to enable calibration.
- * CALIBRATION_SPEED step per tick in calibration mode, increase if tank rotation is too slow.
- */
-#define CALIBRATION_MODE false
-#define CALIBRATION_SPEED 60
-
-/**
  * Buttons configuration.
  *
  * POC has only one TTP223 button, active level high.

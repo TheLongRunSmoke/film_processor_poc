@@ -79,30 +79,7 @@ void motor_controller::clear() {
 
 void motor_controller::calibrationTask(void* pvParameters) {
     auto* state = (State*) pvParameters;
-// TODO
-//
-//    config();
-//
-//    currentStep = 0;
-//
-//    targetStepNumber = RATIO * TURNS * MICROSTEP_MODE;
-//    targetFreq = (RPM / 60.0 * RATIO) * MICROSTEP_MODE;
-//    freqDelta = targetFreq - minFreq;
-//
-//
-//    for (;;) {
-//        //        Serial.println("===========");
-//        //        Serial.println(currentStep);
-//        //        Serial.println(targetStepNumber);
-//        //        unsigned long step = currentStep;
-//        //        if (currentStep > targetStepNumber - (long) (accelRamp * 2)) {
-//        //            Serial.println(elastic);
-//        //            step = currentStep - (targetStepNumber - (long) (accelRamp * 2));
-//        //        }
-//        //        uint16_t currentFreq = minFreq + freqDelta / (1 + exp(elastic * (step - accelRamp) / accelRamp));
-//        //        Serial.println(currentFreq);
-//        vTaskDelay(50 / portTICK_PERIOD_MS);
-//    }
+    // Omitted for now.
 }
 
 void motor_controller::config() {

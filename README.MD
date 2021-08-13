@@ -80,6 +80,7 @@ Easiest way to build and upload firmware is using Arduino IDE.
 
 # Calibration
 
-WIP
+Before using this construction you must set a number of motor steps per one full rotation of particular developing drum.
 
-TBU...
+Manipulate value `RATIO` in [config.h](https://github.com/TheLongRunSmoke/film_processor_poc/blob/main/config.h) until
+drum can make `TURNS` rotation without significant error.
